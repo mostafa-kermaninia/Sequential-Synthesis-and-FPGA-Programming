@@ -1,0 +1,14 @@
+module SAADY_SHIRAZI(input unsigned[7:0]Wave1,Wave2,Wave3,Wave4, input [2:0]sel, output reg [7:0]out);
+	always @(Wave1,Wave2,Wave3,Wave4, sel)begin
+		out = 0;
+		case(sel)
+		2'b000: out = Wave1;
+		2'b001: out = Wave2;
+		2'b010: out = Wave3;
+		2'b011: out = Wave4;
+		2'b100: out = (Wave4>127)?Wave4 : Wave4-127;
+		2'b101: out = (Wave4>127)?Wave4 : 0;
+		endcase
+	end
+endmodule
+
